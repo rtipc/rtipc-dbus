@@ -19,5 +19,11 @@ add_executable(server server/main.c server/service.c server/server.c messages.c)
 
 target_include_directories(server PRIVATE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/rtipc/lib ${SYSTEMD_INCLUDE_DIR})
 target_compile_definitions(server PUBLIC -DRTIPC_LOG_API=1)
-#target_compile_options(${PROJECT_NAME} PRIVATE ${RTIPC_COMPILER_OPTIONS})
 target_link_libraries(server PRIVATE rtipc PkgConfig::SYSTEMD)
+
+
+add_executable(client client/main.c client/client.c messages.c)
+
+target_include_directories(client PRIVATE ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/rtipc/lib ${SYSTEMD_INCLUDE_DIR})
+target_compile_definitions(client PUBLIC -DRTIPC_LOG_API=1)
+target_link_libraries(client PRIVATE rtipc PkgConfig::SYSTEMD)
