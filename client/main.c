@@ -94,20 +94,20 @@ fail_vec:
   return NULL;
 }
 
-const ri_channel_t client2server_channels[] = {
-    (ri_channel_t) {.add_msgs = 0,
+const ri_attr_t client2server_channels[] = {
+    (ri_attr_t) {.add_msgs = 0,
                     .msg_size = sizeof(msg_command_t),
                     .eventfd = 1,
                     .info = {.data = COMMAND_INFO, .size = sizeof(COMMAND_INFO)}},
     {0},
 };
 
-const ri_channel_t server2client_channels[] = {
-    (ri_channel_t) {.add_msgs = 0,
+const ri_attr_t server2client_channels[] = {
+    (ri_attr_t) {.add_msgs = 0,
                     .msg_size = sizeof(msg_response_t),
                     .eventfd = 1,
                     .info = {.data = RESPONSE_INFO, .size = sizeof(RESPONSE_INFO)}},
-    (ri_channel_t) {.add_msgs = 10,
+    (ri_attr_t) {.add_msgs = 10,
                     .msg_size = sizeof(msg_event_t),
                     .eventfd = 1,
                     .info = {.data = EVENT_INFO, .size = sizeof(EVENT_INFO)}},
